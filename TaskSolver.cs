@@ -28,14 +28,14 @@ namespace StringSetQueries
             this._givenStrings.Remove(s);
         }
 
-        public long NumberOfOccurencesOfStringsFromSetIn (string s)
+        public long NumberOfOccurencesOfStringsFromSetIn (string text)
         {
             OccurencesInStringCounter counter = new OccurencesInStringCounter(this._hashableStringFactory
-                                                                                   .GetHashableStringWithArray(s));
+                                                                                   .GetHashableStringWithArray(text));
 
             int res = 0;
-            foreach (var elem in this._givenStrings)
-                res += counter.numberOfOccurences(elem.Value);
+            foreach (var s in this._givenStrings)
+                res += counter.numberOfOccurences(s.Value);
 
             return res;
         }
