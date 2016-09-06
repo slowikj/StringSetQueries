@@ -17,10 +17,10 @@ namespace StringSetQueries
         
         public int numberOfOccurences(AbstractHashableString stringToCheck)
         {
-            int lastIndexOfCheck = this._text.Length() - stringToCheck.Length() + 1;
+            int lastIndexOfCheck = this._text.Length() - stringToCheck.Length();
             
             int res = 0;
-            for (int i = 0; i < lastIndexOfCheck; ++i)
+            for (int i = 0; i <= lastIndexOfCheck; ++i)
             {
                 if (this._text
                         .HashOfSubstring(i, stringToCheck.Length()) == stringToCheck.Hash)
