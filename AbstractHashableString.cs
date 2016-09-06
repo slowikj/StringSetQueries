@@ -33,7 +33,7 @@ namespace StringSetQueries
             }
         }
 
-        protected abstract long GetHashFrom(string s);
+        protected abstract long GetHashFrom (string s);
 
         public AbstractHashableString (string s)
         {
