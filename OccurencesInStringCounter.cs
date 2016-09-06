@@ -8,22 +8,22 @@ namespace StringSetQueries
 {
     class OccurencesInStringCounter
     {
-        protected IHashableStringWithArray _hashableStringWithArray;
+        protected IHashableStringWithArray _text;
 
-        public OccurencesInStringCounter (IHashableStringWithArray hashableStringWithArray)
+        public OccurencesInStringCounter (IHashableStringWithArray text)
         {
-            this._hashableStringWithArray = hashableStringWithArray;
+            this._text = text;
         }
         
-        public int numberOfOccurences(AbstractHashableString hashableStringToCheck)
+        public int numberOfOccurences(AbstractHashableString stringToCheck)
         {
-            int lastIndexOfCheck = this._hashableStringWithArray.Length() - hashableStringToCheck.Length() + 1;
+            int lastIndexOfCheck = this._text.Length() - stringToCheck.Length() + 1;
             
             int res = 0;
             for (int i = 0; i < lastIndexOfCheck; ++i)
             {
-                if (this._hashableStringWithArray
-                        .HashOfSubstring(i, hashableStringToCheck.Length()) == hashableStringToCheck.Hash)
+                if (this._text
+                        .HashOfSubstring(i, stringToCheck.Length()) == stringToCheck.Hash)
                     ++res;
             }
 
