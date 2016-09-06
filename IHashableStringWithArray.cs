@@ -8,8 +8,7 @@ namespace StringSetQueries
 {
     interface IHashableStringWithArray
     {
-        long HashOfSubstring(int start, int len);
-
-        int Length();
+        long HashOfSubstring (int start, int len);
+        int Length ();
     }
 }

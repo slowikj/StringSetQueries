@@ -8,7 +8,7 @@ namespace StringSetQueries
 {
     interface IHashableStringFactory
     {
-        AbstractHashableString GetHashableStringWithoutArray(string s);
-        IHashableStringWithArray GetHashableStringWithArray(string s);
+        AbstractHashableString GetHashableStringWithoutArray (string s);
+        IHashableStringWithArray GetHashableStringWithArray (string s);
     }
 }

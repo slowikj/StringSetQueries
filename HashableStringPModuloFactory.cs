@@ -17,12 +17,12 @@ namespace StringSetQueries
             this._modulo = modulo;
         }
 
-        public IHashableStringWithArray GetHashableStringWithArray(string s)
+        public IHashableStringWithArray GetHashableStringWithArray (string s)
         {
             return new HashableStringPModuloWithArray(s, this._p, this._modulo);
         }
 
-        public AbstractHashableString GetHashableStringWithoutArray(string s)
+        public AbstractHashableString GetHashableStringWithoutArray (string s)
         {
             return new HashableStringPModulo(s, this._p, this._modulo);
         }

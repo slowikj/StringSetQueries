@@ -15,7 +15,7 @@ namespace StringSetQueries
             this._text = text;
         }
         
-        public int numberOfOccurences(AbstractHashableString stringToCheck)
+        public int numberOfOccurences (AbstractHashableString stringToCheck)
         {
             int lastIndexOfCheck = this._text.Length() - stringToCheck.Length();
             

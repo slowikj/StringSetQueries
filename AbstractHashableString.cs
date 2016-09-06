@@ -12,17 +12,11 @@ namespace StringSetQueries
         protected string _s;
         private long _hash = NOT_COUNTED;
 
-        protected abstract long GetHashFrom(string s);
-        protected virtual void ComputeHash()
+        protected virtual void ComputeHash ()
         {
             this.Hash = this.GetHashFrom(this._s);
         }
 
-        public AbstractHashableString (string s)
-        {
-            this._s = s;
-        }
-        
         public long Hash
         {
             get
@@ -39,6 +33,13 @@ namespace StringSetQueries
             }
         }
 
+        protected abstract long GetHashFrom(string s);
+
+        public AbstractHashableString (string s)
+        {
+            this._s = s;
+        }
+        
         public int Length ()
         {
             return this._s.Length;
