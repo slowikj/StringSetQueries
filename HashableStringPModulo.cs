@@ -9,12 +9,7 @@ namespace StringSetQueries
     class HashableStringPModulo : AbstractHashableString
     {
         protected int _p, _modulo;
-
-        protected override void ComputeHash()
-        {
-            this.Hash = this.GetHashFrom(this._s);            
-        }
-
+        
         protected override long GetHashFrom(string s)
         {
             long res = 0;

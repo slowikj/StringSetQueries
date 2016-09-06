@@ -13,7 +13,10 @@ namespace StringSetQueries
         private long _hash = NOT_COUNTED;
 
         protected abstract long GetHashFrom(string s);
-        protected abstract void ComputeHash();
+        protected virtual void ComputeHash()
+        {
+            this.Hash = this.GetHashFrom(this._s);
+        }
 
         public AbstractHashableString (string s)
         {
