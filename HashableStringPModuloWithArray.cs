@@ -8,7 +8,7 @@ namespace StringSetQueries
 {
     class HashableStringPModuloWithArray : HashableStringPModulo, IHashableStringWithArray
     {
-        private long[] _hashSuffixArray;
+        private long[] _suffixHashes;
         private long[] _powerOfP;
 
         public HashableStringPModuloWithArray (string s, int p, int mod) : base (s, p, mod)
@@ -25,10 +25,10 @@ namespace StringSetQueries
         
         protected long HashOfSuffix(int start)
         {
-            if (this._hashSuffixArray == null)
+            if (this._suffixHashes == null)
                 this.ComputeHash();
 
-            return this._hashSuffixArray[start];
+            return this._suffixHashes[start];
         }
 
         protected long GetPowerOfP (int exp)
@@ -51,13 +51,13 @@ namespace StringSetQueries
         protected override void ComputeHash()
         {
             int sLen = this.Length();
-            this._hashSuffixArray = new long[sLen + 1];
-            this._hashSuffixArray[sLen - 1] = this._s[sLen - 1];
+            this._suffixHashes = new long[sLen + 1];
+            this._suffixHashes[sLen - 1] = this._s[sLen - 1];
             
             for (int i = sLen - 2; i >= 0; --i)
-                this._hashSuffixArray[i] = ((this._hashSuffixArray[i + 1] * this._p) + this._s[i]) % this._modulo;
+                this._suffixHashes[i] = ((this._suffixHashes[i + 1] * this._p) + this._s[i]) % this._modulo;
 
-            this.Hash = this._hashSuffixArray[0];
+            this.Hash = this._suffixHashes[0];
         }
     }
 }
