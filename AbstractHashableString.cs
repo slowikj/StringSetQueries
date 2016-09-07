@@ -11,18 +11,13 @@ namespace StringSetQueries
         private const long NOT_COUNTED = -1;
         protected string _s;
         private long _hash = NOT_COUNTED;
-
-        protected virtual void ComputeHash ()
-        {
-            this.Hash = this.GetHashFrom(this._s);
-        }
-
+        
         public long Hash
         {
             get
             {
                 if (this._hash == NOT_COUNTED)
-                    this.ComputeHash();
+                    this._hash = this.GetHashFrom(this._s);
 
                 return this._hash;
             }
