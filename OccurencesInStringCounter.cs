@@ -14,20 +14,15 @@ namespace StringSetQueries
         {
             this._text = text;
         }
-        
-        public int numberOfOccurences (AbstractHashableString stringToCheck)
+
+        public int NumberOfOccurences (AbstractHashableString stringToCheck)
         {
             int lastIndexOfCheck = this._text.Length() - stringToCheck.Length();
             
-            int res = 0;
-            for (int i = 0; i <= lastIndexOfCheck; ++i)
-            {
-                if (this._text
-                        .HashOfSubstring(i, stringToCheck.Length()) == stringToCheck.Hash)
-                    ++res;
-            }
-
-            return res;
+            return Enumerable.Count<int>(Enumerable.Range(0, lastIndexOfCheck + 1),
+                                         (int start) => this._text.HashOfSubstring(start, stringToCheck.Length())
+                                                        == stringToCheck.Hash
+                                        );
         }
     }
 }

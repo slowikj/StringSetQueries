@@ -19,7 +19,7 @@ namespace StringSetQueries
         public long HashOfSubstring (int start, int len)
         {
             return ((this.HashOfSuffix(start)
-                       - (this.HashOfSuffix(start + len) * this._powerComputer.GetPower(len))) % this._modulo
+                       - this.HashOfSuffix(start + len)*this._powerComputer.GetPower(len)) % this._modulo
                        + this._modulo) % this._modulo;
         }
         

@@ -8,36 +8,36 @@ namespace StringSetQueries
 {
     class TaskSolver
     {
-        private Dictionary<string, AbstractHashableString> _givenStrings;
+        private HashSet<AbstractHashableString> _searchKeys;
         private IHashableStringFactory _hashableStringFactory;
 
         public TaskSolver (IHashableStringFactory hashableStringFactory)
         {
             this._hashableStringFactory = hashableStringFactory;
-            this._givenStrings = new Dictionary<string, AbstractHashableString>();
+            this._searchKeys = new HashSet<AbstractHashableString>();
         }
 
-        public void AddString (string s)
+        public void AddSearchKey (string s)
         {
-            this._givenStrings.Add(s, this._hashableStringFactory
-                                          .GetHashableStringWithoutArray(s));
+            this._searchKeys.Add(this._hashableStringFactory
+                                     .GetHashableStringWithoutArray(s));
         }
 
-        public void DeleteString (string s)
+        public void RemoveSearchKey (string s)
         {
-            this._givenStrings.Remove(s);
+            this._searchKeys.Remove(this._hashableStringFactory
+                                        .GetHashableStringWithoutArray(s));
         }
 
-        public long NumberOfOccurencesOfStringsFromSetIn (string text)
+        public long NumberOfOccurencesOfKeys (string text)
         {
             OccurencesInStringCounter counter = new OccurencesInStringCounter(this._hashableStringFactory
-                                                                                   .GetHashableStringWithArray(text));
+                                                                                  .GetHashableStringWithArray(text));
 
-            int res = 0;
-            foreach (var s in this._givenStrings)
-                res += counter.numberOfOccurences(s.Value);
-
-            return res;
+            return Enumerable.Sum<AbstractHashableString> (this._searchKeys,
+                                                           (AbstractHashableString str) =>
+                                                                counter.NumberOfOccurences(str)
+                                                          );
         }
     }
 }

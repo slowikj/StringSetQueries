@@ -9,7 +9,13 @@ namespace StringSetQueries
     class HashableStringPModulo : AbstractHashableString
     {
         protected int _p, _modulo;
-        
+
+        public HashableStringPModulo(string s, int p, int mod) : base(s)
+        {
+            this._p = p;
+            this._modulo = mod;
+        }
+
         protected override long GetHashFrom (string s)
         {
             long res = 0;
@@ -17,12 +23,6 @@ namespace StringSetQueries
                 res = ((res * this._p) + s[i]) % this._modulo;
 
             return res;
-        }
-
-        public HashableStringPModulo (string s, int p, int mod) : base(s)
-        {
-            this._p = p;
-            this._modulo = mod;
         }
     }
 }

@@ -28,16 +28,33 @@ namespace StringSetQueries
             }
         }
 
-        protected abstract long GetHashFrom (string s);
-
-        public AbstractHashableString (string s)
+        public AbstractHashableString(string s)
         {
             this._s = s;
         }
+
+        protected abstract long GetHashFrom (string s);
         
         public int Length ()
         {
             return this._s.Length;
+        }
+
+        public override int GetHashCode()
+        {
+            const int ModuloToTruncate = 1000000033;
+            return (int)(this.Hash % ModuloToTruncate);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return (obj is AbstractHashableString) ? this._s == (obj as AbstractHashableString)._s
+                                                   : false;
+        }
+
+        public override string ToString()
+        {
+            return this._s;
         }
     }
 }

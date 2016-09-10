@@ -12,7 +12,7 @@ namespace StringSetQueries
         {
             TaskSolver ts = new TaskSolver(new HashableStringPModuloFactory());
 
-            int m = int.Parse (Console.ReadLine());
+            int m = int.Parse(Console.ReadLine());
 
             for (int i = 0; i < m; ++i)
             {
@@ -22,9 +22,9 @@ namespace StringSetQueries
 
                 switch (operationNumber)
                 {
-                    case 1: ts.AddString(str); break;
-                    case 2: ts.DeleteString(str); break;
-                    case 3: Console.WriteLine(ts.NumberOfOccurencesOfStringsFromSetIn(str)); break;
+                    case 1: ts.AddSearchKey(str); break;
+                    case 2: ts.RemoveSearchKey(str); break;
+                    case 3: Console.WriteLine(ts.NumberOfOccurencesOfKeys(str)); break;
                 }
             }
         }
