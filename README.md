@@ -1,5 +1,6 @@
 # StringSetQueries
-The solution to a codeforces' algorithmic task (a hashing algorithm)
+The solution to [a codeforces' algorithmic task](http://codeforces.com/problemset/problem/710/F)
+(a hashing algorithm)
 
 Task
 ---
